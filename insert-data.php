@@ -1,8 +1,18 @@
 <?php
 require "bootstrap.php";
-$user = User::Create(['name' => "Guilherme Cazaroto",    'email' => "gui.cazaroto@lbs.com",    'password' => password_hash("guicaza",PASSWORD_BCRYPT), ]);
-print_r($user->todo()->create([
-   'todo' => "Descovery Eloquent functions",
-   'category' => "eloquent",
-   'description' => "Descovery how to do queries"
-   ]));
+try {
+   $user = User::Create(
+      [
+         'name' => "Jonas da Baleia",    
+         'email' => "jonas.cazaroto@lbs.com", 
+         'password' => password_hash("jocaza",PASSWORD_BCRYPT)
+      ]
+   );
+   $user->todo()->create([
+      'todo' => "Make an API with Slim Framework",
+      'category' => "slim",
+      'description' => "Descovery how to do an API"
+   ]);
+} catch (Exception $err) {
+   echo "Occorreu um erro";
+}
